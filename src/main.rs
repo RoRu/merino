@@ -155,7 +155,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
     let authed_users = authed_users?;
 
     // Create proxy server
-    let mut merino = Merino::new(opt.port, &opt.ip, auth_methods, authed_users, None).await?;
+    let mut merino = Merino::new(opt.port, &opt.ip, auth_methods, authed_users, Duration::from_secs(3)).await?;
 
     // Start Proxies
     merino.serve().await;
